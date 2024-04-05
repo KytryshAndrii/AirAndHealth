@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@amplifiedhq/countries-atlas": "^1.1.3",
+    "@react-leaflet/core": "^2.1.0",
+    "@types/geojson": "^7946.0.14",
     "@types/node": "^16.18.94",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
+    "geojson-places": "^1.0.8",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.0",
     "leaflet": "^1.9.4",
