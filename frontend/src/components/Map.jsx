@@ -10,6 +10,7 @@ import { RecenterAutomatically } from "../utils/RecenterAutomatically"
 import { Markers } from "./Markers"
 import {CitySelectBlock} from "./CitySelect";
 import { SingleMarker } from "./Marker"
+import { SideBar } from "./SideBar"
  
 export const Map = () => {
 
@@ -66,6 +67,7 @@ export const Map = () => {
 
     return (
       <div>
+        <SideBar/>
         <CitySelectBlock getCountryParams={handleCountrySelect} getCityParams={handleCitySelect}/>
         <MapContainer center={[52.27998600, 17.35229390]} zoom={5} scrollWheelZoom={true} preferCanvas={true}>
           <TileLayer
