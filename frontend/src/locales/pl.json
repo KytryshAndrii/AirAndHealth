@@ -1,3 +1,14 @@
 {
-    "":""
+    "Informacja teoretyczna": "Theory information",
+    "Personalizacja informacji": "Info Customization",
+    "Odpowiedzi na pytania": "Q&A",
+
+    "Strona monitorowania jakości powietrza": "Air quality monitoring website",
+    "Witamy na naszej stronie, gdzie możesz łatwo uzyskać dostęp do najbardziej aktualnych informacji na temat jakości powietrza w Twoim regionie. Naszym celem jest uczynienie monitorowania jakości powietrza jak najbardziej wygodnym i efektywnym dla Ciebie.": "Welcome to our site, where you can easily access the most up-to-date information on air quality in your region. Our goal is to make air quality monitoring as convenient and efficient as possible for you.",
+    "Funkcje": "Features",
+    "Wybór kraju: Aby wybrać kraj, wystarczy dwukrotnie kliknąć wybrany kraj na mapie.": "Country selection: To select a country, simply double-click the desired country on the map.",
+    "Cofanie działań: Aby cofnąć działania, wystarczy kliknąć raz w puste miejsce na mapie.": "To undo actions, simply click once on an empty spot on the map.",
+    "Wyszukiwanie miejsca: Jeśli nie możesz znaleźć swojego miejsca na mapie, możesz wyszukać go, wprowadzając nazwę w górnym menu strony.": "If you can't find your place on the map, you can search for it by entering the name in the top menu of the page.",
+    "Uzyskiwanie informacji: Aby uzyskać szczegółowe informacje na temat jakości powietrza w wybranym regionie, kliknij na znaczniki na mapie lub skorzystaj z bocznego panelu.": "To get detailed information about the air quality in the selected region, click on the markers on the map or use the side panel.",
+    "Dołącz do naszej społeczności i bądź częścią naszego wysiłku dla czystego powietrza dla wszystkich!": "Join our community and be part of our effort for clean air for all!"
 }
