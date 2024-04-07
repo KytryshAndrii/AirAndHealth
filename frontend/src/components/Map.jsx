@@ -41,6 +41,10 @@ export const Map = () => {
 
     const getCountryProps = (country, layer) => {
       layer.on({
+        click: () => {
+          setCountryStates([]);
+          setLatLong([52.27998600, 17.35229390, 5])
+        },
         dblclick: () =>{
             const chosenCountry = CountriesAtlas.findByIso3(country.properties.ISO_A3)
             setCountryStates(CountriesAtlas.getStates(chosenCountry.code));
@@ -63,20 +67,20 @@ export const Map = () => {
     return (
       <div>
         <CitySelectBlock getCountryParams={handleCountrySelect} getCityParams={handleCitySelect}/>
-        <MapContainer center={[52.27998600, 17.35229390]} zoom={3} scrollWheelZoom={true} preferCanvas={true}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <GeoJSON
-          data={mapCountriesData}
-          style={style}
-          onEachFeature={getCountryProps}z
-        />
-        <RecenterAutomatically lat={latLong[0]} lng={latLong[1]} zoom={latLong[2]}/>
-        {countryStates.length >0 ? <Markers states={countryStates}/> :<></>}
-        {isSingleCityChosen ? <SingleMarker lat={latLong[0]} lng={latLong[1]}/> :<></>}
-      </MapContainer>
+        <MapContainer center={[52.27998600, 17.35229390]} zoom={5} scrollWheelZoom={true} preferCanvas={true}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <GeoJSON
+            data={mapCountriesData}
+            style={style}
+            onEachFeature={getCountryProps}z
+          />
+          <RecenterAutomatically lat={latLong[0]} lng={latLong[1]} zoom={latLong[2]}/>
+          {countryStates.length > 0 ? <Markers states={countryStates}/> :<></>}
+          {isSingleCityChosen ? <SingleMarker lat={latLong[0]} lng={latLong[1]}/> :<></>}
+        </MapContainer>
       </div>
     )
   }
