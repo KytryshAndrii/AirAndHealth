@@ -6,13 +6,28 @@ import { useTranslation } from "react-i18next";
 
 export const ModalWindow = ({isModal, child, toggleModal}) =>{
 
-    const { t, i18n } =  useTranslation();
+    const {i18n} =  useTranslation();
     const lang = i18n.language;
 
     const changeLanguage = language => {
         i18n.changeLanguage(language)
         localStorage.setItem("language", language)
     }   
+
+    const customScrollBarStyle = {
+        overflowY: "scroll",
+        overflowX: "hidden",
+        scrollbarWidth: "thin",
+        scrollbarColor: "white",
+        "::-webkit-scrollbar-track": {
+          background: "transparent",
+          display: "none"
+        },
+        "::-webkit-scrollbar-thumb": {
+          background: "#1E1E1E",
+          borderRadius: "100vw"
+        }
+      }
 
     const renderLanguages = () => {
         return lang === 'en'?
@@ -31,12 +46,12 @@ export const ModalWindow = ({isModal, child, toggleModal}) =>{
         {isModal ?
             <div className='z-10010 h-screen w-screen fixed top-0 bottom-0 left-0 right-0 caret-transparent ease-in-out duration-[.7s]'>
                 <div className="bg-modal-bg h-screen w-screen fixed top-0 bottom-0 left-0 right-0" onClick={()=>toggleModal()}>
-                    <div className='z-10020 bg-cream-white text-stone-900 lg:w-[85%] md:w-[45%] sm:w-[65%] w-[92%] h-fit rounded-xl absolute p-3 top-[43%] left-[50%] translate-x-[-50%] translate-y-[-50%] overflow-y-auto' onClick={(event)=>event.stopPropagation()}>
-                        <FontAwesomeIcon icon={faXmark} className="absolute right-3 top-2 md:w-6 md:h-6 w-2 h-2 hover:text-lime-800 ease-in-out duration-[.2s]" onClick={()=>toggleModal()}/>
-                        <div className="absolute left-3 top-2 md:w-5 md:h-5 w-2 h-2 opacity-100 hover:opacity-70 ease-in-out duration-[.2s]">
+                    <div className='z-10020 bg-cream-white text-stone-900 lg:w-[85%] md:w-[45%] sm:w-[65%] w-[92%] h-[90%] rounded-xl absolute p-3 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' onClick={(event)=>event.stopPropagation()}>
+                        <FontAwesomeIcon icon={faXmark} className="fixed right-3 top-2 md:w-6 md:h-6 w-2 h-2 hover:text-lime-800 ease-in-out duration-[.2s]" onClick={()=>toggleModal()}/>
+                        <div className="fixed left-3 top-2 md:w-5 md:h-5 w-2 h-2 opacity-100 hover:opacity-70 ease-in-out duration-[.2s]">
                             {renderLanguages()}
                         </div>
-                        <div className='flex justify-center content-center align-middle'>
+                        <div className='flex justify-center content-center align-middle h-full overflow-y-auto scroll-smooth mr-8 mt-1' style={customScrollBarStyle}>
                             {child}
                         </div>
                     </div>

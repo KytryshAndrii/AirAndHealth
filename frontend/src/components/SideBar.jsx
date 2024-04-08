@@ -4,6 +4,7 @@ import {faChartPie, faInfo, faArrowCircleRight, faCircleXmark, faQuestion} from 
 import { useTranslation } from "react-i18next";
 import { WellComeInfo } from './modal-fillers/WellCome';
 import { ModalWindow } from './ModalWindow';
+import { Info } from './modal-fillers/Info';
 
 export const SideBar = () => {
 
@@ -13,9 +14,14 @@ export const SideBar = () => {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
     
     const [isModal, setIsModal] = useState(false)
+    const [isInfoModal, setIsInfoModal] = useState(false)
     
     const toggleModal = () => {
         setIsModal(!isModal)
+    }
+    
+    const toggleInfoModal = () => {
+        setIsInfoModal(!isInfoModal)
     }
     
     const changeLanguage = language => {
@@ -59,7 +65,7 @@ export const SideBar = () => {
                         </a>
                         <p className={`${isSideBarOpen? ' block w-full' : 'hidden'} text-sm p-1 ml-4 mt-2 font-semibold`}>{t('Personalizacja informacji')}</p>
                     </div>
-                    <div className='flex flex-row justify-between content-center h-fit w-full opacity-100 hover:opacity-70 ease-in-out duration-[.2s]'>
+                    <div className='flex flex-row justify-between content-center h-fit w-full opacity-100 hover:opacity-70 ease-in-out duration-[.2s]' onClick={toggleInfoModal}>
                         <a className="mb-4 cursor-pointer">
                             <FontAwesomeIcon icon={faInfo} className="md:w-8 md:h-8 w-4 h-4"/>
                             <hr className={`${isSideBarOpen? 'w-8' : 'w-full'} border-2 mt-1 transition-all duration-300 ease-in-out`}></hr>
@@ -76,6 +82,7 @@ export const SideBar = () => {
             </div>
         </div>
         <ModalWindow isModal={isModal} toggleModal={toggleModal} child={<WellComeInfo/>}/>
+        <ModalWindow isModal={isInfoModal} toggleModal={toggleInfoModal} child={<Info/>}/>
         </>
     )
 }
