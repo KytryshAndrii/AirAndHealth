@@ -9,6 +9,7 @@
     "@types/node": "^16.18.94",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
+    "country-state-city": "^3.2.1",
     "geojson-places": "^1.0.8",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.0",

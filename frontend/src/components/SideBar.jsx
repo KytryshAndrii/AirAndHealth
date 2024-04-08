@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { WellComeInfo } from './modal-fillers/WellCome';
 import { ModalWindow } from './ModalWindow';
 import { Info } from './modal-fillers/Info';
+import { CustomCharts } from './modal-fillers/CustomCharts';
 
 export const SideBar = () => {
 
@@ -13,8 +14,9 @@ export const SideBar = () => {
 
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
     
-    const [isModal, setIsModal] = useState(false)
-    const [isInfoModal, setIsInfoModal] = useState(false)
+    const [isModal, setIsModal] = useState(false);
+    const [isInfoModal, setIsInfoModal] = useState(false);
+    const [isCustomChartsModal, setIsCustomChartsModal] = useState(false);
     
     const toggleModal = () => {
         setIsModal(!isModal)
@@ -23,7 +25,11 @@ export const SideBar = () => {
     const toggleInfoModal = () => {
         setIsInfoModal(!isInfoModal)
     }
-    
+
+    const toggleCustomChartsModal = () => {
+        setIsCustomChartsModal(!isCustomChartsModal)
+    }
+
     const changeLanguage = language => {
         i18n.changeLanguage(language)
         localStorage.setItem("language", language)
@@ -58,7 +64,7 @@ export const SideBar = () => {
                 </a>
                 <div className="flex flex-col w-full justify-around p-2 mt-4 content-center" onClick={(event)=>{event.stopPropagation()}}>
                     {renderLanguages()}
-                    <div className='flex flex-row justify-between content-center h-fit w-full opacity-100 hover:opacity-70 ease-in-out duration-[.2s]'>
+                    <div className='flex flex-row justify-between content-center h-fit w-full opacity-100 hover:opacity-70 ease-in-out duration-[.2s]' onClick={toggleCustomChartsModal}>
                         <a className="mb-4 cursor-pointer">
                             <FontAwesomeIcon icon={faChartPie} className="md:w-8 md:h-8 w-4 h-4"/>
                             <hr className={`${isSideBarOpen? 'w-8' : 'w-full'} border-2 mt-1 transition-all duration-300 ease-in-out`}></hr>
@@ -83,6 +89,7 @@ export const SideBar = () => {
         </div>
         <ModalWindow isModal={isModal} toggleModal={toggleModal} child={<WellComeInfo/>}/>
         <ModalWindow isModal={isInfoModal} toggleModal={toggleInfoModal} child={<Info/>}/>
+        <ModalWindow isModal={isCustomChartsModal} toggleModal={toggleCustomChartsModal} child={<CustomCharts/>}/>
         </>
     )
 }

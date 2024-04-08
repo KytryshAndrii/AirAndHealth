@@ -68,7 +68,9 @@ export const Map = () => {
     return (
       <div>
         <SideBar/>
-        <CitySelectBlock getCountryParams={handleCountrySelect} getCityParams={handleCitySelect}/>
+        <div className="fixed p-1  top-[4%] left-[50%] translate-x-[-50%] translate-y-[-7%] z-10000 w-[60%] h-14 bg-slate-950 shadow-gray-800 rounded-lg caret-transparent cursor-pointer">
+          <CitySelectBlock getCountryParams={handleCountrySelect} getCityParams={handleCitySelect}/>
+        </div>
         <MapContainer center={[52.27998600, 17.35229390]} zoom={5} scrollWheelZoom={true} preferCanvas={true}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
