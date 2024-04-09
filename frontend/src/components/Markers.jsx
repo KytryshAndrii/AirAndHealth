@@ -3,6 +3,7 @@ import icon from "leaflet/dist/images/marker-icon.png"
 import iconShadow from "leaflet/dist/images/marker-shadow.png"
 import L from "leaflet"
 import {useState} from "react"
+import {AirQualityPopUpInfo} from './AirQuolityPopUpInfo'
 
 export const Markers = ({states}) => {
 
@@ -37,7 +38,7 @@ export const Markers = ({states}) => {
             states.map((state)=>(state.cities.map((city)=>(
               <Marker position={[city.latitude, city.longitude]} icon={DefaultIcon} key={city.name} riseOnHover={true}>
                 <Popup>
-                  {city.name} is for popup with lat: {city.latitude} and lon {city.longitude}
+                  <AirQualityPopUpInfo latitude={city.latitude} longitude={city.longitude} name={city.name}/>
                 </Popup>
               </Marker>
         )))) :<></>}
@@ -45,7 +46,7 @@ export const Markers = ({states}) => {
             selectedState.cities.map((city)=>(
               <Marker position={[city.latitude, city.longitude]} icon={DefaultIcon} key={city.name} riseOnHover={true}>
                 <Popup>
-                  {city.name} is for popup with lat: {city.latitude} and lon {city.longitude}
+                  <AirQualityPopUpInfo latitude={city.latitude} longitude={city.longitude} name={city.name}/>
                 </Popup>
               </Marker>
         )) :<></>}

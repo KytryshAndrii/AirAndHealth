@@ -4,11 +4,11 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png"
 import L from "leaflet"
 import { GeoJSON } from "react-leaflet"
 import mapCountriesData from "../data/countries"
-import { useState, useEffect } from "react"
+import { useState} from "react"
 import { CountriesAtlas } from '@amplifiedhq/countries-atlas'
 import { RecenterAutomatically } from "../utils/RecenterAutomatically"
 import { Markers } from "./Markers"
-import {CitySelectBlock} from "./CitySelect";
+import {CitySelectBlock} from "./selects/CitySelect";
 import { SingleMarker } from "./Marker"
 import { SideBar } from "./SideBar"
  

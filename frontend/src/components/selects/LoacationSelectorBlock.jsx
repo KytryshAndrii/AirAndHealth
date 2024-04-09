@@ -1,17 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { Country, State, City } from 'country-state-city';
 
 export const LocationSelector = ({getCityObject}) => {
     const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
-
-    const[selectedCityObject, setSelectedCityObject] = useState(null);
-
-    useEffect(()=>{
-      getCityObject(selectedCityObject)
-    }, [selectedCity])
-  
+    
     const countries = Country.getAllCountries();
     const states = selectedCountry ? State.getStatesOfCountry(selectedCountry.isoCode) : [];
     const cities = selectedState ? City.getCitiesOfState(selectedCountry.isoCode, selectedState.isoCode) : [];
@@ -29,7 +23,7 @@ export const LocationSelector = ({getCityObject}) => {
   
     const handleCityChange = (event) => {
       setSelectedCity(JSON.parse(event.target.value));
-      setSelectedCityObject(event.target.value)
+      getCityObject(JSON.parse(event.target.value))
     };
   
     return (
