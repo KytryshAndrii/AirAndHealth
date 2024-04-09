@@ -5,7 +5,9 @@ import { dateConverter } from '../utils/DateFormating';
 export const AirQualityPopUpInfo = ({ latitude, longitude, name }) => {
 
   const [pollutionData, setPollutionData] = useState(null);
-  const [measureTime, setMeasureTime] = useState(null)
+  const [measureTime, setMeasureTime] = useState(null);
+  const [isCustomChartsModal, setIsCustomChartsModal] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +24,10 @@ export const AirQualityPopUpInfo = ({ latitude, longitude, name }) => {
     console.log(pollutionData)
   }, [latitude, longitude]);
 
+  const toggleCustomChartsModal = () => {
+    setIsCustomChartsModal(!isCustomChartsModal)
+  }
+
   const getColor = (value, threshold) => {
     if (value < threshold[0]) return 'bg-green-500'; // Good
     if (value >= threshold[0] && value < threshold[1]) return 'bg-yellow-500'; // Fair
@@ -33,9 +39,12 @@ export const AirQualityPopUpInfo = ({ latitude, longitude, name }) => {
   return (
     <div className="p-2 w-32 h-fit m-2">
       {pollutionData && (
-        <div>
-          <h2 className="text-xl font-semibold mb-2">Air Quality:{name}</h2>
-          <p className="text-md font-semibold mb-2">By date: {measureTime}</p>
+        <div className='w-full h-full'>
+          <div className='flex flex-col'>
+            <h2 className="text-xl font-semibold mb-1">Air Quality:</h2>
+            <h2 className="text-xl font-semibold mb-2">{name}</h2>
+            <p className="w-full text-md font-semibold mb-2">By date: {measureTime}</p>
+          </div>
           <ul className='font-semibold text-sm'>
             <li className='flex flex-row justify-between p-1'>
               SO2: <span className={`rounded px-2 ${getColor(pollutionData.so2, [0, 20, 80, 250])}`}>{pollutionData.so2}</span>
@@ -56,7 +65,6 @@ export const AirQualityPopUpInfo = ({ latitude, longitude, name }) => {
               CO: <span className={`rounded px-2 ${getColor(pollutionData.co, [0, 4400, 9400, 12400])}`}>{pollutionData.co}</span>
             </li>
           </ul>
-          <p className='w-18 h-fit text-center text-md font-semibold p-2 m-1 border-2 border-slate-300 shadow-md hover:shadow-inner rounded-lg caret-transparent ease-in-out duration-[.4s]'>More</p>
         </div>
       )}
     </div>

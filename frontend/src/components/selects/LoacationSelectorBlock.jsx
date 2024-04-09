@@ -1,7 +1,7 @@
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import { Country, State, City } from 'country-state-city';
 
-export const LocationSelector = ({getCityObject}) => {
+export const LocationSelector = ({getCityObject, isclear}) => {
     const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
@@ -10,20 +10,32 @@ export const LocationSelector = ({getCityObject}) => {
     const states = selectedCountry ? State.getStatesOfCountry(selectedCountry.isoCode) : [];
     const cities = selectedState ? City.getCitiesOfState(selectedCountry.isoCode, selectedState.isoCode) : [];
   
+    useEffect(()=>{
+      setSelectedCity('')
+      setSelectedCountry('')
+      setSelectedState('')
+    }, [isclear])
+
     const handleCountryChange = (event) => {
+      if(event.target.value){
       setSelectedCountry(JSON.parse(event.target.value));
       setSelectedState('');
       setSelectedCity('');
+      }
     };
   
     const handleStateChange = (event) => {
+      if(event.target.value){
       setSelectedState(JSON.parse(event.target.value));
       setSelectedCity('');
+      }
     };
   
     const handleCityChange = (event) => {
-      setSelectedCity(JSON.parse(event.target.value));
-      getCityObject(JSON.parse(event.target.value))
+      if(event.target.value){
+        setSelectedCity(JSON.parse(event.target.value));
+        getCityObject(JSON.parse(event.target.value))
+      }
     };
   
     return (

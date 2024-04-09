@@ -10,6 +10,8 @@ export const MultiToggle = ({options, value, toggle}) => {
         value={value}
         onChange={toggle}
         labelledBy="None"
+        disableSearch={false}
+        hasSelectAll={false}
       />
     </div>
   );
