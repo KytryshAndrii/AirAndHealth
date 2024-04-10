@@ -1,6 +1,9 @@
 import { dateConverter } from '../utils/DateFormating';
+import { useTranslation } from 'react-i18next';
 
 export const CurrentInfo = ({ data }) => {
+
+  const {t} =  useTranslation();
 
   const getColor = (value, threshold) => {
     if (value < threshold[0]) return 'bg-green-500'; // Good
@@ -14,8 +17,8 @@ export const CurrentInfo = ({ data }) => {
     <div className="w-fit flex flex-wrap justify-center">
       {data ?
         <div className="p-2 w-fit h-fit m-2 bg-gray-100 rounded-lg shadow-md">
-          <h2 className="text-xl text-center font-semibold mb-2">Current Air Quality</h2>
-          <p className="text-md text-center font-semibold mb-2">By date: {data.list? dateConverter.convertUnixToDate(data.list[0].dt): ''}</p>
+          <h2 className="text-xl text-center font-semibold mb-2">{t('Aktualna jakość powietrza')}</h2>
+          <p className="text-md text-center font-semibold mb-2">{t('Według daty: ')} {data.list? dateConverter.convertUnixToDate(data.list[0].dt): ''}</p>
           <ul className='flex flex-row font-semibold text-sm'>
             <li className='flex flex-row justify-between p-1'>
               SO2: <span className={`rounded px-2 ${getColor(data.list[0].components.so2, [0, 20, 80, 250])}`}>{data.list[0].components.so2}</span>

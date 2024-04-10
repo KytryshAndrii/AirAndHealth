@@ -19,9 +19,6 @@ export const Map = () => {
     const [countryStates, setCountryStates] = useState([])
     const [isSingleCityChosen, setIsSingleCityChosen] = useState(false)
 
-    // useEffect(()=>{
-    //   console.log(clickNumber)
-    // },[clickNumber])
 
     let DefaultIcon = L.icon({
       iconUrl: icon,
@@ -35,7 +32,7 @@ export const Map = () => {
         fillColor: "transparent",
         weight: 1,
         opacity: 1,
-        color: "blue", //Outline color
+        color: "blue", 
         fillOpacity: 1
       }
     }

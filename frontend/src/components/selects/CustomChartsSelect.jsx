@@ -4,8 +4,10 @@ import { FromToDataSelect } from '../selects/FromToDateSelect';
 import { MultiToggle } from '../selects/MultiToggle';
 import { polutionAPI } from '../../api/PolutionAPI';
 import { dateConverter } from '../../utils/DateFormating';
+import { useTranslation } from 'react-i18next';
 
 export const CustomChartsSelect = ({ onUpdate, clear }) => {
+
   const [selectCount, setSelectCount] = useState(1);
   const [selectedItems, setSelectedItems] = useState(Array(selectCount).fill(''));
   const [updatedItems, setUpdatedItems] = useState([]);
@@ -13,10 +15,13 @@ export const CustomChartsSelect = ({ onUpdate, clear }) => {
   const [dateFrom, setDateFrom] = useState(null);
   const [selectedDateType, setSelectedDataType] = useState([]);
   const [isClear, setIsClear] = useState(false)
+  const {t} =  useTranslation();
+    
+
   const options = [
-    { label: 'Current', value: 'current' },
-    { label: 'Forecast', value: 'forecast' },
-    { label: 'Historical', value: 'historical' },
+    { label: t('Aktualny'), value: 'current' },
+    { label: t('Prognoza'), value: 'forecast' },
+    { label: t('Historyczny'), value: 'historical' },
   ];
 
   useEffect(()=>{
@@ -108,9 +113,9 @@ export const CustomChartsSelect = ({ onUpdate, clear }) => {
         </div>
         {selectedDateType.some((option) => option.value === 'historical') ? (
           <div className="flex flex-row text-md w-fit h-fit p-1 m-1 border-2 shadow-lg rounded-xl">
-            <p>From</p>
+            <p>{t('Od')}</p>
             <FromToDataSelect format="yyy-MM-dd" value={dateFrom} onChange={(date) => setDateFrom(date)} />
-            <p>To</p>
+            <p>{t('Do')}</p>
             <FromToDataSelect format="yyy-MM-dd" value={dateTo} onChange={(date) => setDateTo(date)} />
           </div>
         ) : (
@@ -123,19 +128,19 @@ export const CustomChartsSelect = ({ onUpdate, clear }) => {
             className="bg-lime-800 hover:bg-lime-900 w-fit p-2 border-2 border-stone-200 rounded-2xl shadow-xl"
             onClick={(event) => handleAddSelect(event)}
           >
-            Add Selector
+            {t('Dodaj miasto')}
           </button>
           <button
             className="bg-red-800 hover:bg-red-900 w-fit p-2 border-2 border-stone-200 rounded-2xl shadow-xl"
             onClick={(event) => handleRemoveSelect(event)}
           >
-            Remove Selector
+            {t('Usuń miasto')}
           </button>
           <button
             className="bg-slate-600 hover:bg-slate-800 w-fit p-2 border-2 border-stone-200 rounded-2xl shadow-xl"
             onClick={()=>{clear(), setIsClear(true); setSelectedDataType([]), setUpdatedItems([])}}
           >
-            Clear
+           {t('Wyczyść')}
           </button>
         </div>
         <MultiToggle options={options} value={selectedDateType} toggle={handleSelectDataType} />

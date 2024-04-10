@@ -16,7 +16,7 @@ export const SingleMarker = ({lat, lng, name}) => {
   return (
       <>
         <Marker position={[lat, lng]} icon={DefaultIcon} key={lat} riseOnHover={true}>
-            <Popup>
+            <Popup className="w-fit mt-64">
               <AirQualityPopUpInfo latitude={lat} longitude={lng} name={name}/>
             </Popup>
         </Marker>

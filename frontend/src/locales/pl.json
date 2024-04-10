@@ -41,7 +41,26 @@
     "Normalny": "Fair",
     "Umiarkowany": "Moderate",
     "Zły": "Poor",
-    "Bardzo Zły": "Very Poor"
+    "Bardzo Zły": "Very Poor",
+
+    "Brak Informacji": "No Information",
+    "Informacje o prognozie": "Forecast Information",
+    "Informacje historyczne": "Historical Information",
+    "Aktualna jakość powietrza": "Current Air Quality",
+    "Według daty: ": "By date: ",
+    "Wybierz kraj": "Select your Country",
+    "Wybierz wojewódstwo" :"Select your State",
+    "Znajdź miasto": "Find your City",
+    "Aktualny": "Current",
+    "Prognoza": "Forecast",
+    "Historyczny": "Historical",
+    "Od": "From",
+    "To": "Do",
+    "Dodaj miasto": "Add City",
+    "Usuń miasto": "Remove City",
+    "Wybierz tryb": "Pick a mode",
+    "Brak": "None",
+    "Wyczyść": "Clear"
 
 
 }

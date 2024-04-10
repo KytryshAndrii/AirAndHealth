@@ -12,11 +12,11 @@ export const Markers = ({states}) => {
   const [selectedState, setSelectedState] = useState(null)
 
   const map = useMap();
+
   useMapEvents({
-    zoomend() { // zoom event (when zoom animation ended)
-      const zoom = map.getZoom(); // get current Zoom of map
+    zoomend() { 
+      const zoom = map.getZoom();
       setZoom(zoom);
-      console.log(zoom)
     },
   });
 
@@ -37,7 +37,7 @@ export const Markers = ({states}) => {
         {zoom > 8? 
             states.map((state)=>(state.cities.map((city)=>(
               <Marker position={[city.latitude, city.longitude]} icon={DefaultIcon} key={city.name} riseOnHover={true}>
-                <Popup>
+                <Popup className="w-fit mt-64">
                   <AirQualityPopUpInfo latitude={city.latitude} longitude={city.longitude} name={city.name}/>
                 </Popup>
               </Marker>
@@ -45,7 +45,7 @@ export const Markers = ({states}) => {
         {isStateSelected ? 
             selectedState.cities.map((city)=>(
               <Marker position={[city.latitude, city.longitude]} icon={DefaultIcon} key={city.name} riseOnHover={true}>
-                <Popup>
+                <Popup className="w-fit mt-64">
                   <AirQualityPopUpInfo latitude={city.latitude} longitude={city.longitude} name={city.name}/>
                 </Popup>
               </Marker>

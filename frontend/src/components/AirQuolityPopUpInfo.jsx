@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { polutionAPI } from '../api/PolutionAPI';
 import { dateConverter } from '../utils/DateFormating';
+import { useTranslation } from 'react-i18next';
 
 export const AirQualityPopUpInfo = ({ latitude, longitude, name }) => {
 
   const [pollutionData, setPollutionData] = useState(null);
   const [measureTime, setMeasureTime] = useState(null);
-  const [isCustomChartsModal, setIsCustomChartsModal] = useState(false);
-
+  const {t} =  useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,12 +21,7 @@ export const AirQualityPopUpInfo = ({ latitude, longitude, name }) => {
     };
 
     fetchData();
-    console.log(pollutionData)
   }, [latitude, longitude]);
-
-  const toggleCustomChartsModal = () => {
-    setIsCustomChartsModal(!isCustomChartsModal)
-  }
 
   const getColor = (value, threshold) => {
     if (value < threshold[0]) return 'bg-green-500'; // Good
@@ -37,13 +32,13 @@ export const AirQualityPopUpInfo = ({ latitude, longitude, name }) => {
   };
 
   return (
-    <div className="p-2 w-32 h-fit m-2">
+    <div className="p-2 w-64 h-fit m-2">
       {pollutionData && (
         <div className='w-full h-full'>
           <div className='flex flex-col'>
-            <h2 className="text-xl font-semibold mb-1">Air Quality:</h2>
+            <h2 className="text-xl font-semibold mb-1">{t('Aktualna jakość powietrza')}</h2>
             <h2 className="text-xl font-semibold mb-2">{name}</h2>
-            <p className="w-full text-md font-semibold mb-2">By date: {measureTime}</p>
+            <p className="w-full text-md font-semibold mb-2">{t('Według daty: ')}{measureTime}</p>
           </div>
           <ul className='font-semibold text-sm'>
             <li className='flex flex-row justify-between p-1'>
